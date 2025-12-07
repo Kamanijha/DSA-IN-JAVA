@@ -21,13 +21,15 @@ public class Program3 {
 
         // }
 
-        boolean res = uglyNumber(30);
-        System.out.println(res);
+        // boolean res = uglyNumber(30);
+        // System.out.println(res);
 
         // hcf of all number
         // public static int getHcf(int a ,int b){
         // if(b == 0) return a;
         // return getHcf(b, a%b);
+
+        towerOfHanoi(3,"A" , "B","C");
 
     }
 
@@ -62,5 +64,17 @@ public class Program3 {
             } 
         }
         return true;
+    }
+
+    // tower of hanoi
+
+    public static void towerOfHanoi(int n,String a,String b,String c){
+        if(n == 1){
+            System.out.println("transfer disk " + n + " from " + a +" to " +c);
+            return;
+        }
+        towerOfHanoi(n-1, a, c, b);
+        System.out.println("transfer disk " + n + " from " + a +" to " +c);
+        towerOfHanoi(n-1, b, a, c);
     }
 }
