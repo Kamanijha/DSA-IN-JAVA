@@ -254,4 +254,47 @@ public class Number1 {
         int cube = n*n*n;
         return cube;
     }
+
+
+
+    // q. 5 [TCS NQT 2024]
+    public static boolean isPrime(int n) {
+        if (n <= 1) {
+            return false;
+        } else if (n == 2) {
+            return true;
+        } else if (n % 2 == 0) {
+            return false;
+        }
+        for (int i = 3; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void printPrime(int n){
+       int count = 0;
+       for(int i =1;i<=n;i++){
+           if(isPrime(i)){
+               count++;
+               int digitSum = getDigitSum(i);
+               if(isPrime(digitSum)){
+                 System.out.println(i);
+               }
+           }
+       }
+   }
+    
+    public static int getDigitSum(int n){
+        int sum =0;
+        while(n>0){
+            int rem = n%10;
+            sum = sum +rem;
+            n/=10;
+        }
+        return sum;
+    }
+
 }
