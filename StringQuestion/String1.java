@@ -1,7 +1,7 @@
 
 public class String1 {
     public static void main(String[] args) {
-        String s = "Mohan is good";
+        String s = "Madam";
         // for(int i = 0;i<s.length();i++){
         // System.out.println(s.charAt(i));
         // }
@@ -18,9 +18,12 @@ public class String1 {
 
         // int res = countAllVowel(s);
         // System.out.println(res);
-       String res =  reverse(s);
-       System.out.println(res);
-
+    //    String res =  reverse(s);
+    //    System.out.println(res);
+    //reverse1(s);
+   boolean res = isPalindrome1(s);
+   System.out.println(res);
+     
     }
 
     public static String reverseWord(String s) {
@@ -185,5 +188,40 @@ public class String1 {
         }   
         return res; 
 
+    }
+
+    public static void reverse1(String s){
+         String res = "";
+         for(int i = s.length()-1;i>=0;i--){
+            System.out.print(s.charAt(i));
+         }
+    }
+
+    // q. 12.  one way
+    public static void isPalindrome(String s){
+        String res = ""; String temp = s;
+         for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            res = c+res;
+        }
+        if(res.equalsIgnoreCase(temp)){
+            System.out.println("this is palindrome");
+        }else{
+            System.out.println("this is not palindrome");
+        }
+    }
+
+    // q. 12 // this is check palindrome without reverse the string
+    public static boolean isPalindrome1(String s){
+        s = s.toLowerCase();
+        int st = 0; int end = s.length()-1;
+
+        while (st < end) {
+            if(s.charAt(st) != s.charAt(end)){
+                return false;
+            }
+            st++; end--;
+        }
+        return true;
     }
 }
