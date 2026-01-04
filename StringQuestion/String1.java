@@ -18,12 +18,23 @@ public class String1 {
 
         // int res = countAllVowel(s);
         // System.out.println(res);
-    //    String res =  reverse(s);
-    //    System.out.println(res);
-    //reverse1(s);
-   boolean res = isPalindrome1(s);
-   System.out.println(res);
-     
+        // String res = reverse(s);
+        // System.out.println(res);
+        // reverse1(s);
+        // boolean res = isPalindrome1(s);
+        // System.out.println(res);
+        // String[] arr= {"abc","car","cool"};
+        // String res= getFirstPalindrome(arr);
+        // System.out.println(res);
+
+        // String res = replaceSpaceChar("hello world");
+        // System.out.println(res);
+
+        // boolean r=  isContainsDigit("23f45");
+        // System.out.println(r);
+        String res =   margeString("hackerrank","mountain");
+        System.out.println(res);
+
     }
 
     public static String reverseWord(String s) {
@@ -132,96 +143,156 @@ public class String1 {
     }
 
     // q. 7
-    public static void printNumbricIndex(String s){
+    public static void printNumbricIndex(String s) {
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if(c >= '0' && c <= '9'){
+            if (c >= '0' && c <= '9') {
                 System.err.println(i);
             }
-        }    
+        }
     }
 
     // q. 8
-    public static void printSpaceIndex(String s){
+    public static void printSpaceIndex(String s) {
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if(c==' '){
+            if (c == ' ') {
                 System.err.println(i);
             }
         }
     }
 
     // q. 9
-    public static String segregateNum(String s){
+    public static String segregateNum(String s) {
         String res = "";
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if(c >='0' && c <='9'){
-                res = res +c;
-            }else{
-                res = c+res;
+            if (c >= '0' && c <= '9') {
+                res = res + c;
+            } else {
+                res = c + res;
             }
-        }  
-        return res;  
+        }
+        return res;
     }
 
     // q. 10
-    public static String segregateNumAndChar(String s){
-        String num = "";String alp = "";
+    public static String segregateNumAndChar(String s) {
+        String num = "";
+        String alp = "";
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if(c >='0' && c <='9'){
-                num = num +c;
-            }else{
+            if (c >= '0' && c <= '9') {
+                num = num + c;
+            } else {
                 alp = alp + c;
             }
-        }  
-        return alp+ num ; 
+        }
+        return alp + num;
     }
 
     // q. 11
-    public static String reverse(String s){
+    public static String reverse(String s) {
         String res = "";
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            res = c+res;
-        }   
-        return res; 
-
-    }
-
-    public static void reverse1(String s){
-         String res = "";
-         for(int i = s.length()-1;i>=0;i--){
-            System.out.print(s.charAt(i));
-         }
-    }
-
-    // q. 12.  one way
-    public static void isPalindrome(String s){
-        String res = ""; String temp = s;
-         for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            res = c+res;
+            res = c + res;
         }
-        if(res.equalsIgnoreCase(temp)){
+        return res;
+
+    }
+
+    public static void reverse1(String s) {
+        String res = "";
+        for (int i = s.length() - 1; i >= 0; i--) {
+            System.out.print(s.charAt(i));
+        }
+    }
+
+    // q. 12. one way
+    public static void isPalindrome(String s) {
+        String res = "";
+        String temp = s;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            res = c + res;
+        }
+        if (res.equalsIgnoreCase(temp)) {
             System.out.println("this is palindrome");
-        }else{
+        } else {
             System.out.println("this is not palindrome");
         }
     }
 
     // q. 12 // this is check palindrome without reverse the string
-    public static boolean isPalindrome1(String s){
+    public static boolean isPalindrome1(String s) {
         s = s.toLowerCase();
-        int st = 0; int end = s.length()-1;
+        int st = 0;
+        int end = s.length() - 1;
 
         while (st < end) {
-            if(s.charAt(st) != s.charAt(end)){
+            if (s.charAt(st) != s.charAt(end)) {
                 return false;
             }
-            st++; end--;
+            st++;
+            end--;
         }
         return true;
     }
+
+    // q. 13
+    public static String getFirstPalindrome(String[] arr) {
+
+        for (int i = 0; i < arr.length; i++) {
+            String word = arr[i];
+
+            if (isPalindrome1(word)) {
+                return word;
+
+            }
+        }
+
+        return "";
+    }
+
+    /// q. 15
+    public static String replaceSpaceChar(String s) {
+        String res = "";
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == ' ') {
+                res = res + "_";
+            } else {
+                res = res + c;
+            }
+        }
+        return res;
+    }
+
+    // q.16
+    public static boolean isContainsDigit(String s) {
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c <'0' || c > '9') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // q 17 later 
+    // q. 18 later
+    // 19
+    public static String margeString(String s1,String s2){
+        String res = "";
+        int i = 0;
+        while (i<s1.length() && i < s2.length()) {
+            res = res + s1.charAt(i) + s2.charAt(i);
+            i++;
+        }
+        return i < s1.length()? res + s1.substring(i) : res+s2.substring(i);
+    }
+
+    // q 20
+    // q. 21 later
 }
