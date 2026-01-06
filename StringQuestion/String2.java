@@ -11,12 +11,16 @@ public class String2 {
         // System.out.println(num);
         // int secBigNUm = secondBigNum("ef4fgh4");
         // System.out.println(secBigNUm);
-        // String res= AlphabateUpperCase("aBBN23@fKNghL");
+       // AlphabateUpperCase("aBBN23@fKNghL");
         // System.out.println(res);
-        /// printCharcterOnce("sdffggrr33g778j");
-        // printFreqOfCharcter("helloo");
+        // printCharcterOnce("programming");
+        // printFreqOfCharcter("hell345@@oo");
         // printOnce("hello world") ;
-        printMoreOnce("hello");
+        //printMoreOnce("hello");
+        //maxFreqCharcter("aaBBBBBBcbdf");
+        BigCharMaxFreqCharcter("aaaefbbbgccc");
+       
+        
     }
 
     // 22
@@ -146,35 +150,43 @@ public class String2 {
 
     // q. 29. "ab@34AcB4nM". o/p = ABM. i will check later this logic is not remove
     // duplicate only give work on upper case
-    public static String AlphabateUpperCase(String s) {
+    public static void AlphabateUpperCase(String ss) {
         int[] freq = new int[26];
-
+         String s = ss.toUpperCase();
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (c >= 65 && c <= 90) {
                 freq[c - 65]++;
-            } else if (c >= 97 && c <= 122) {
+            }
+        }
+
+        for (int i = 0; i < freq.length; i++) {
+            if(freq[i] == 1){
+                System.out.println((char)(i+65));
+            }
+        }
+    }
+
+    // q. 30 
+
+     public static void AlphabateLowerCase(String ss) {
+        int[] freq = new int[26];
+         String s = ss.toLowerCase();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c >= 97 && c <= 122) {
                 freq[c - 97]++;
             }
         }
 
         for (int i = 0; i < freq.length; i++) {
-
-        }
-
-        String res = "";
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (c >= 65 && c <= 90) {
-                res = res + c;
+            if(freq[i] == 1){
+                System.out.println((char)(i+97));
             }
         }
-        return res;
     }
 
-    // q. 30 is same as the 29 try latter
-
-    // 31
+    // 31  which shacter present onec in all string  print them 
     public static void printCharcterOnce(String s) {
         int[] freq = new int[256];
         for (int i = 0; i < s.length(); i++) {
@@ -183,27 +195,42 @@ public class String2 {
         }
 
         for (int i = 0; i < freq.length; i++) {
-            if (freq[i] >= 1) {
+            if (freq[i] == 1) {
                 System.out.println((char) i);
             }
         }
     }
 
     // q. 32
-    public static void printFreqOfCharcter(String s) {
-        int[] freq = new int[26];
+    // public static void printFreqOfCharcter(String s) {
+    //     int[] freq = new int[26];
+    //     for (int i = 0; i < s.length(); i++) {
+    //         char c = s.charAt(i);
+    //         if (c >= 65 && c <= 90) {
+    //             freq[c - 65]++;
+    //         } else if (c >= 97 && c <= 122) {
+    //             freq[c - 97]++;
+    //         }
+    //     }
+
+    //     for (int i = 0; i < freq.length; i++) {
+    //         if (freq[i] > 0) {
+    //             System.out.println((char) (i + 97) + " is " + freq[i] + " times");
+    //         }
+    //     }
+    // }
+    
+    // q. 32
+     public static void printFreqOfCharcter(String s) {
+        int[] freq = new int[256];
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if (c >= 65 && c <= 90) {
-                freq[c - 65]++;
-            } else if (c >= 97 && c <= 122) {
-                freq[c - 97]++;
-            }
+            freq[c]++;
         }
 
         for (int i = 0; i < freq.length; i++) {
             if (freq[i] > 0) {
-                System.out.println((char) (i + 97) + " is " + freq[i] + " times");
+                System.out.println((char) (i) + " is " + freq[i] + " times");
             }
         }
     }
@@ -236,5 +263,45 @@ public class String2 {
                 System.out.println((char) i);
             }
         }
+    }
+
+    // q. 35
+
+    // q. 36
+    public static void maxFreqCharcter(String s){
+        int[] freq = new int [26];
+        for(int i = 0;i<s.length();i++){
+            char c = s.charAt(i);
+            if(c >= 65 && c <= 90){
+                freq[c-65] ++;
+            }else if(c >= 97 && c <= 122){
+                freq[c-97]++;
+            }
+        }
+        int max =0;int index = 0;
+        for(int i = 0;i<freq.length;i++){
+            if(freq[i] > max){
+                max = freq[i];
+                index = i;
+            }
+        }
+        System.out.println((char) (index+97));
+    }
+
+    // q. 38
+     public static void BigCharMaxFreqCharcter(String s){
+        int[] freq = new int [26];
+        for(int i = 0;i<s.length();i++){
+            char c = s.charAt(i);
+            freq[c] ++;
+        }
+        int max =0;int index = 0;
+        for(int i = 0;i<freq.length;i++){
+            if(freq[i] >= max){
+                max = freq[i];
+                index = (char) i;
+            }
+        }
+        System.out.println( (index));
     }
 }

@@ -294,5 +294,5 @@ public class String1 {
     }
 
     // q 20
-    // q. 21 later
+    // q. 21 later zig zag conversion
 }
