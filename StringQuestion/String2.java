@@ -18,7 +18,9 @@ public class String2 {
         // printOnce("hello world") ;
         //printMoreOnce("hello");
         //maxFreqCharcter("aaBBBBBBcbdf");
-        BigCharMaxFreqCharcter("aaaefbbbgccc");
+        //BigCharMaxFreqCharcter("aaaefbbbgccc");
+        //smallCharMaxFreqCharcter("abceeefggg");
+        firstUniqChar("leetcode");
        
         
     }
@@ -288,12 +290,36 @@ public class String2 {
         System.out.println((char) (index+97));
     }
 
+    // q. 37
+    public static void smallCharMaxFreqCharcter(String s){
+         int[] freq = new int [26];
+        for(int i = 0;i<s.length();i++){
+            char c = s.charAt(i);
+            if(c >= 65 && c <= 90){
+                freq[c-65] ++;
+            }else if(c >= 97 && c <= 122){
+                freq[c-97]++;
+            }
+        }
+
+        int max = 0; int index = 0;
+        for(int i = 0;i<freq.length;i++){
+            if(freq[i] >max){
+                max = freq[i];
+                index = i;
+            }else if(freq[i] == max && i < index){
+                index = i;
+            }
+        }
+        System.out.println((char) (index + 'a'));
+    }
+
     // q. 38
      public static void BigCharMaxFreqCharcter(String s){
         int[] freq = new int [26];
         for(int i = 0;i<s.length();i++){
             char c = s.charAt(i);
-            freq[c] ++;
+            freq[c-'a'] ++;
         }
         int max =0;int index = 0;
         for(int i = 0;i<freq.length;i++){
@@ -302,6 +328,23 @@ public class String2 {
                 index = (char) i;
             }
         }
-        System.out.println( (index));
+        System.out.println((char) (index+'a'));
+    }
+
+    // q. 39   not correct logic
+    public static void firstUniqChar(String s){
+        int[] freq = new int[26];
+        for(int i = 0;i<s.length();i++){
+            char c= s.charAt(i);
+            freq[c-'a']++;
+        }
+        int index = 0;
+        for(int i = 0;i<freq.length;i++){
+            if(freq[i] == 1){
+                index = i;
+                return;
+            }
+        }
+        System.out.println((char) (index +'a'));
     }
 }

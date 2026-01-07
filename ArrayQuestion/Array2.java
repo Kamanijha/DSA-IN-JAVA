@@ -145,22 +145,24 @@ public class Array2 {
     }
 
     // q. 8
-    public static int differenceOfSum(int[] arr) {
-        int elementSum = 0;
-        int digitSum = 0;
-        for (int number : arr) {
-            elementSum = elementSum + number;
+    // public static int differenceOfSum(int[] arr) {
+    //     int elementSum = 0;
+    //     int digitSum = 0;
+    //     for (int number : arr) {
+    //         elementSum = elementSum + number;
 
-            int temp = number;
-            while (temp > 0) {
-                int rem = temp % 10;
-                digitSum = digitSum + rem;
-                temp /= 10;
-            }
-        }
-        return elementSum - digitSum;
+    //         int temp = number;
+    //         while (temp > 0) {
+    //             int rem = temp % 10;
+    //             digitSum = digitSum + rem;
+    //             temp /= 10;
+    //         }
+    //     }
+    //     return elementSum - digitSum;
 
-    }
+    // }
+    
+
 
     // q. 9
     public static int[] getConcatenation(int[] nums) {

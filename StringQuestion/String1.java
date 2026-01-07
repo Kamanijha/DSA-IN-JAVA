@@ -32,8 +32,19 @@ public class String1 {
 
         // boolean r=  isContainsDigit("23f45");
         // System.out.println(r);
-        String res =   margeString("hackerrank","mountain");
-        System.out.println(res);
+        // String res =   margeString("hackerrank","mountain");
+        // System.out.println(res);
+        
+        String[] arr = {"ram", "sita", "gitaaa"};
+       //getSecondLargestStr(arr);
+        //getLargestStr(arr);
+       // getEvenLengthStr(arr);
+
+        int[] array =  {2,5,4,3,6};
+       int[] resArr =  asceptSelfSum(array);
+       for (int a : resArr) {
+        System.out.println(a);
+       }
 
     }
 
@@ -127,8 +138,91 @@ public class String1 {
         }
         return count;
     }
+    
+    // q. 4
+    public static void getLargestStr(String[] s){
+        int[] cntArr= new int[s.length];
+        for(int i  = 0;i<s.length;i++){
+            System.out.println(s[i]);
+            int len = getLength(s[i]);
+            cntArr[i] = len;
+        }
+        int maxLen = 0; int secMax= 0;
+        for(int i = 0;i<cntArr.length;i++){
+            if(cntArr[i] > maxLen){
+                
+                maxLen = cntArr[i];
+            }
+        }
+        System.out.println(maxLen);
+
+    }
+
+    public static int getLength(String s){
+        int count = 0;
+        for(int i = 0;i<s.length();i++){
+            count++;
+        }
+        return count;
+    }
+
+    // return second max string length
+
+    public static void getSecondLargestStr(String[] s){
+        int[] cntArr= new int[s.length];
+        for(int i  = 0;i<s.length;i++){
+            System.out.println(s[i]);
+            int len = getLength(s[i]);
+            cntArr[i] = len;
+        }
+        int maxLen = 0; int secMax= 0;
+        for(int i = 0;i<cntArr.length;i++){
+            if(cntArr[i] > maxLen){
+                secMax = maxLen;
+                maxLen = cntArr[i];
+            }else if(cntArr[i] > secMax && cntArr[i] != maxLen){
+                secMax = cntArr[i];
+            }
+        }
+        System.out.println(secMax);
+
+    }
 
     // q. 5 later
+     public static void getEvenLengthStr(String[] s){
+        int[] cntArr= new int[s.length];
+        for(int i  = 0;i<s.length;i++){
+            //System.out.println(s[i]);
+            int len = getLength(s[i]);
+            cntArr[i] = len;
+        }
+        
+        for(int i = 0;i<cntArr.length;i++){
+           if(cntArr[i] % 2 == 0){
+           // System.out.println(cntArr[i]); // this line print the string length
+            System.out.println(s[i]); // thos leine print the string whic has even
+           }
+        }
+       
+
+    }
+
+    // q. 6
+    public static int[] asceptSelfSum(int[] arr){
+        int[] newArr= new int[arr.length];
+        int sum = 0;
+        for(int i = 0;i<arr.length;i++){
+            sum = sum + arr[i];
+        }
+
+        for(int i = 0;i<arr.length;i++){
+            int newSum = 0;
+            newSum = sum - arr[i];
+            newArr[i] = newSum;
+        }
+        return  newArr;
+    }
+
     // q. 4 later
     // q. 6 count all vowel
     public static int countAllVowel(String s) {
