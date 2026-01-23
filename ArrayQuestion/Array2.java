@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class Array2 {
     public static void main(String[] args) {
-        //int[] arr = { 10, 20, 30, 40 };
+        // int[] arr = { 10, 20, 30, 40 };
         // printNewArray(arr);
         // printNewArray1(arr);
         // int[] result = runningSum(arr);
@@ -79,15 +79,15 @@ public class Array2 {
 
         // int[] ar = leftRotationKpostion(a, 3);
         // for (int x : ar) {
-        //     System.out.print(x + " ");
+        // System.out.print(x + " ");
         // }
         // int[] b = reverseHalfArray(a,0,a.length-1);
         // for(int x : b){
-        //     System.out.print(x + " ");
+        // System.out.print(x + " ");
         // }
-        int[] b= moveZeross(a);
-        for(int x: b){
-            System.out.print(x+" ");
+        int[] b = moveZeross(a);
+        for (int x : b) {
+            System.out.print(x + " ");
         }
 
     }
@@ -146,23 +146,21 @@ public class Array2 {
 
     // q. 8
     // public static int differenceOfSum(int[] arr) {
-    //     int elementSum = 0;
-    //     int digitSum = 0;
-    //     for (int number : arr) {
-    //         elementSum = elementSum + number;
+    // int elementSum = 0;
+    // int digitSum = 0;
+    // for (int number : arr) {
+    // elementSum = elementSum + number;
 
-    //         int temp = number;
-    //         while (temp > 0) {
-    //             int rem = temp % 10;
-    //             digitSum = digitSum + rem;
-    //             temp /= 10;
-    //         }
-    //     }
-    //     return elementSum - digitSum;
+    // int temp = number;
+    // while (temp > 0) {
+    // int rem = temp % 10;
+    // digitSum = digitSum + rem;
+    // temp /= 10;
+    // }
+    // }
+    // return elementSum - digitSum;
 
     // }
-    
-
 
     // q. 9
     public static int[] getConcatenation(int[] nums) {
@@ -273,8 +271,8 @@ public class Array2 {
 
     // q. 17
     public static int[] reverseHalfArray(int[] arr, int st, int end) {
-        reverseArray(arr,0,3);
-        reverseArray(arr,4,arr.length-1);
+        reverseArray(arr, 0, 3);
+        reverseArray(arr, 4, arr.length - 1);
         return arr;
     }
 
@@ -293,17 +291,17 @@ public class Array2 {
     }
 
     // q. 19
-    // public static int[] twoSum(int[] nums, int target) {
-    // for(int i = 0;i<nums.length;i++){
+    public static int[] twoSum(int[] nums, int target) {
+        for (int i = 0; i < nums.length; i++) {
 
-    // for(int j = 0;j<nums.length;j++){
-    // if(nums[i] + nums[j] == target){
-    // return new int[] {i,j};
-    // }
-    // }
-    // }
-    // return new int[] {};
-    // }
+            for (int j = 0; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target) {
+                    return new int[] { i, j };
+                }
+            }
+        }
+        return new int[] {};
+    }
 
     // two sum using map
 
@@ -452,35 +450,36 @@ public class Array2 {
     }
 
     // q. 32
-    public static void moveZeros(int[] a){
-        int[] temp  = new int[a.length];
+    public static void moveZeros(int[] a) {
+        int[] temp = new int[a.length];
         int i = 0;
-        for (int n:a) {
-            if(n!= 0){
+        for (int n : a) {
+            if (n != 0) {
                 temp[i] = n;
                 i++;
             }
         }
 
-        for(int x:temp){
+        for (int x : temp) {
             System.out.print(x + " ");
         }
     }
-   // q. 32 
-    public static int[] moveZeross(int[] a){
+
+    // q. 32
+    public static int[] moveZeross(int[] a) {
         int j = -1;
-        for(int i = 0;i<a.length;i++){
-            if(a[i] == 0){
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == 0) {
                 j = i;
                 break;
             }
         }
 
-        for(int i = j+1;i<a.length;i++){
-            if(a[i] != 0){
+        for (int i = j + 1; i < a.length; i++) {
+            if (a[i] != 0) {
                 int temp = a[j];
                 a[j] = a[i];
-                a[i]= temp;
+                a[i] = temp;
                 j++;
             }
         }
@@ -488,22 +487,22 @@ public class Array2 {
     }
 
     // Sieve of Eratosthenes
-    public static int[] SieveOfEratosthenes(int n){
+    public static int[] SieveOfEratosthenes(int n) {
         boolean[] prime = new boolean[n];
-        for(int i = 0;i<=n;i++){
+        for (int i = 0; i <= n; i++) {
             prime[i] = true;
         }
 
-        for(int i = 2;i*i<=n;i++){
+        for (int i = 2; i * i <= n; i++) {
 
-            for(int j = i*i;j<n;j+=i){
+            for (int j = i * i; j < n; j += i) {
                 prime[i] = false;
             }
         }
 
-        int count =0; 
-        for(int p = 2;p<=n;p++){
-            if(prime[p]){
+        int count = 0;
+        for (int p = 2; p <= n; p++) {
+            if (prime[p]) {
                 count++;
             }
         }

@@ -26,12 +26,23 @@ public class Array1 {
         String[] strings = {"apple", "banana", "kiwi", "grapefruit", "orange"};
         // String longest = findLongestString(arr);
         // System.out.println("The longest string is: " + longest);
-        stringWithEvenNumberOfChar(strings);
-        int[] a = {1,2,3,4};
-        int[] b = runningSum1(a);
-        for(int x:b){
-            System.out.print(x+" ");
-        }
+        // stringWithEvenNumberOfChar(strings);
+        // int[] a = {1,2,3,4};
+        // int[] b = runningSum1(a);
+        // for(int x:b){
+        //     System.out.print(x+" ");
+        // }
+
+        //int[] nums = {2,5,4,3,6};
+        //diffEleSumAndDigitSum(nums);
+    //    int[] n =  multiplyAsceptSelf(nums);
+    //    for (int i : n) {
+    //     System.out.println(i);
+    //    }
+    int[] nums = {1,1,0,0,1,1,1,0,1,1};
+    int res =  maxConsutiveOnes(nums);
+    System.out.println(res);
+
 
     }
 
@@ -137,6 +148,81 @@ public class Array1 {
         }
         return b;
     }
+
+    // q. 8
+    public static void diffEleSumAndDigitSum(int[] a){
+        int eleSum = 0; int digitSum = 0;
+        for(int i =0;i<a.length;i++){
+            int temp = a[i];
+            eleSum = eleSum +a[i];
+                while (temp > 0) {
+                    digitSum = digitSum + temp %10;
+                    temp/= 10;
+                }
+            
+        }
+        System.out.println(eleSum-digitSum);
+    }
     
+    
+    // q. 9
+    public static int[] ConcatenationArr(int[] a){
+        int[] temp = new int[a.length*2];
+        for(int i = 0;i<a.length;i++){
+            temp[i] = a[i];
+            temp[i+a.length] = a[i];
+        }
+        return temp;
+    }
+
+    // q/ 10
+    // public static int[] multiplyAsceptSelf(int[] a){
+    //     int[] tem=  new int[a.length]; int multi = 1;
+    //     for(int i = 0;i<a.length;i++){
+    //         multi = multi * a[i];
+    //     }
+    //     for(int i = 0;i<a.length;i++){
+    //        tem[i] = multi / a[i];
+    //     }
+
+    //     return tem;
+    // }
+  // q. 11
+    public static int[] multiplyAsceptSelf(int[] a){
+        int[] tem=  new int[a.length]; 
+        for(int i = 0;i<a.length;i++){
+            int multi = 1;
+            for(int j= 0;j<a.length;j++){
+                if(i!=j){
+                    multi = multi * a[j];
+                    
+                }
+            }
+            tem[i] = multi;
+            
+        }
+        
+
+        return tem;
+    }
+
+    // q. 12
+    public static int maxConsutiveOnes(int[] a){
+        int tempcnt= 0; int finalcnt= 0;
+        for(int i = 0;i<a.length;i++){
+            if(a[i] == 1){
+                tempcnt ++;
+            }else{
+                if(tempcnt > finalcnt){
+                   finalcnt =  tempcnt;
+                }
+                tempcnt = 0;
+            }
+        }
+        if(tempcnt > finalcnt){
+            finalcnt = tempcnt;
+        }
+        return finalcnt;
+    }
 }
 
