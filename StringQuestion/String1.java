@@ -40,12 +40,14 @@ public class String1 {
         //getLargestStr(arr);
        // getEvenLengthStr(arr);
 
-        int[] array =  {2,5,4,3,6};
-       int[] resArr =  asceptSelfSum(array);
-       for (int a : resArr) {
-        System.out.println(a);
-       }
-
+    //     int[] array =  {2,5,4,3,6};
+    //    int[] resArr =  asceptSelfSum(array);
+    //    for (int a : resArr) {
+    //     System.out.println(a);
+    //    }
+        //boolean res =  isAnagram("anagram","nagaram");
+       boolean res =  isPanagram("")
+        System.out.println(res);
     }
 
     public static String reverseWord(String s) {
@@ -389,4 +391,42 @@ public class String1 {
 
     // q 20
     // q. 21 later zig zag conversion
+
+    public static boolean isAnagram(String s1 , String s2){
+        if(s1.length() != s2.length()) return false;
+        int[] freq = new int[26];
+
+        for(int i = 0;i<s1.length();i++){
+            char c = s1.charAt(i);
+
+            if(c >='a' && c <='z'){
+                freq[c-'a'] ++;
+            }
+        }
+
+        for(int i = 0;i<s2.length();i++){
+            char c = s2.charAt(i);
+            if(freq[c-'a'] == 0){
+                return false;
+            }
+
+            freq[c-'a']--;
+        }
+        return true;
+    }
+
+    public static boolean isPanagram(String s){
+        int[] freq = new int[26];
+        for(int i = 0;i<s.length();i++){
+            char c = s.charAt(i);
+            freq[c-'a'] = 1;
+        }
+
+        for(int i = 0;i<freq.length;i++){
+            if(freq[i] == 0){
+                return false;
+            }
+        }
+        return true;
+    }
 }
