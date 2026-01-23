@@ -46,7 +46,7 @@ public class String1 {
     //     System.out.println(a);
     //    }
         //boolean res =  isAnagram("anagram","nagaram");
-       boolean res =  isPanagram("")
+       boolean res =  isPanagram("abcdefghijklnopqrstuvwxyzcvb");
         System.out.println(res);
     }
 
