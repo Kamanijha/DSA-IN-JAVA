@@ -62,7 +62,7 @@ public class Array2 {
         // System.out.print(x + " ");
         // }
 
-        int[] a = { 1, 2, 0, 4, 0, 6, 0 };
+        int[] a = { 1, 2, 3, 4, 0, 6, 0 };
         // int res= missingElement(a);
         // System.out.println(res);
         // boolean res = checkSortedOrNot(a);
@@ -85,8 +85,9 @@ public class Array2 {
         // for(int x : b){
         // System.out.print(x + " ");
         // }
-        int[] b = moveZeross(a);
-        for (int x : b) {
+        //int[] b = moveZeross(a);
+        int[] c = twoSumUsingMap(a,7);
+        for (int x : c) {
             System.out.print(x + " ");
         }
 
@@ -305,9 +306,19 @@ public class Array2 {
 
     // two sum using map
 
-    // public static int[] twoSum(int[] nums, int target) {
-    // Map<Integer,Integer> m1 = new HashMap<>();
-    // }
+    public static int[] twoSumUsingMap(int[] nums, int target) {
+        Map<Integer, Integer> m1 = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (m1.containsKey(complement)) {
+                return new int[] {
+                        m1.get(complement), i
+                };
+            }
+            m1.put(nums[i], i);
+        }
+        return new int[] {};
+    }
 
     public static void reverseArr(int[] arr, int st, int end) {
         while (st < end) {
@@ -487,23 +498,26 @@ public class Array2 {
     }
 
     // Sieve of Eratosthenes
-    public static int[] SieveOfEratosthenes(int n) {
-        boolean[] prime = new boolean[n];
+    public static void SieveOfEratosthenes(int n) {
+        boolean[] prime = new boolean[n + 1];
         for (int i = 0; i <= n; i++) {
             prime[i] = true;
         }
+        prime[0] = false;
+        prime[1] = false;
 
         for (int i = 2; i * i <= n; i++) {
-
-            for (int j = i * i; j < n; j += i) {
-                prime[i] = false;
+            if (prime[i]) {
+                for (int j = i * i; j <= n; j += i) {
+                    prime[j] = false;
+                }
             }
         }
 
         int count = 0;
         for (int p = 2; p <= n; p++) {
             if (prime[p]) {
-                count++;
+                System.out.println(p);
             }
         }
     }

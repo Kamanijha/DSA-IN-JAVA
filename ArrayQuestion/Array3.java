@@ -10,8 +10,9 @@ public class Array3 {
         //getOddFrequency(arr);
         //maxFrequencyElement(arr);
         //maxFrequencyBiggerElement(arr);
-        int res = nonReapitingElement(arr);
-        System.out.println(res);
+        // int res = nonReapitingElement(arr);
+        // System.out.println(res);
+        getThirdMax(arr);
     }
 
     // q. 32
@@ -34,15 +35,37 @@ public class Array3 {
     }
 
     // q. 46
-    public static void secondSmallestEle(int[] arr){
-        int smallest = Integer.MAX_VALUE; int secondSmall = Integer.MAX_VALUE;
-
-        for(int i = 0;i<arr.length;i++){
-            if(arr[i] < smallest){
-                secondSmall = smallest;
-                smallest = arr[i];
+    public static void getSecondSmall(int[] a){
+        int small = Integer.MAX_VALUE;
+        int secSmall = Integer.MAX_VALUE;
+        for(int i = 0;i<a.length;i++){
+            if(a[i] < small){
+                secSmall = small;
+                small = a[i];
+            }else if(a[i] < secSmall && a[i] != small){
+                secSmall = a[i];
             }
         }
+         System.out.println(secSmall);
+    }
+
+    // q. 47
+    public static void getThirdMax(int[] arr){
+        int max = Integer.MIN_VALUE;int secmax = Integer.MIN_VALUE;int thirdmax = Integer.MIN_VALUE;
+
+        for(int i= 0;i<arr.length;i++){
+            if(arr[i] > max){
+                thirdmax = secmax;
+                secmax = max;
+                max = arr[i];
+            }else if(arr[i] > secmax && arr[i] != max){ // handle the duplicate 
+                thirdmax = secmax;
+                secmax = arr[i];
+            }else if(arr[i] > thirdmax && arr[i] !=secmax && arr[i] != max){
+                thirdmax = arr[i];
+            }
+        }
+        System.out.println(thirdmax);
     }
 
     // frequency array
@@ -237,6 +260,34 @@ public class Array3 {
         }
     }
 
+    // q. 60
+    public static int maxFrequency(int[] a){
+        int max = a[0] ; int min = a[0];
+        for(int x : a){
+            if(x > max){
+                max = x;
+            }else if(x < min){
+                min = x;
+            }
+        }
+        
+        int[] freq = new int[max-min+1];
+        for(int x: a){
+            freq[x-min]++;
+        }
+        int maxFreq = freq[0];
+       int index = 0;
+        for(int i = 1; i<freq.length;i++){
+            if(freq[i] > maxFreq){
+                maxFreq = freq[i];
+                index = i;
+                //System.out.println((i+min));
+            }
+            
+        }
+        return (index+min);
+    }
+
     // q. 61
     public static void maxFrequencySmallerElement(int[] a){
         int max = a[0] ; int min = a[0];
@@ -334,27 +385,32 @@ public class Array3 {
     }
 
     // q. 64
-    public static void majorityElement(int[] a){
-        int max = a[0] ; int min = a[0];
-
-        for(int x:a){
-            if(x>max){
+    public static int majorityElement(int[] a){
+        int max = a[0] ; int min = a[0];int len = a.length;
+        for(int x : a){
+            if(x > max){
                 max = x;
-            }else if(x<min){
+            }else if(x < min){
                 min = x;
             }
         }
+        
         int[] freq = new int[max-min+1];
-        for(int x:a){
+        for(int x: a){
             freq[x-min]++;
         }
-    
-        // compare the 
-        for(int i = 0;i<freq.length;i++){
-            if(freq[i] /freq.length){
-                
+        
+         int majEle = freq[0];
+         int index = 0;
+        for(int i = 0; i<freq.length;i++){
+            if(freq[i] > len/2){
+                majEle = freq[i];
+                index = i;
+                //System.out.println((i+min));
             }
+            
         }
+        return (freq[index] > len/2) ? (index+min):-1;
     }
 
     //q. 49. kth largest element in aaray
