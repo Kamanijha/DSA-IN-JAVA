@@ -20,8 +20,8 @@ public class String2 {
         //maxFreqCharcter("aaBBBBBBcbdf");
         //BigCharMaxFreqCharcter("aaaefbbbgccc");
         //smallCharMaxFreqCharcter("abceeefggg");
-        firstUniqChar("leetcode");
-       
+        //firstUniqChar("leetcode");
+       convertCapitalToSmall("HeLlO");
         
     }
 
@@ -188,7 +188,7 @@ public class String2 {
         }
     }
 
-    // 31  which shacter present onec in all string  print them 
+    // 31  which chacter present onec in all string  print them 
     public static void printCharcterOnce(String s) {
         int[] freq = new int[256];
         for (int i = 0; i < s.length(); i++) {
@@ -346,5 +346,21 @@ public class String2 {
             }
         }
         System.out.println((char) (index +'a'));
+    }
+     
+    // hElLo HeLlO
+    public static void convertCapitalToSmall(String s){
+        String temp = "";
+        for(int i = 0;i<s.length();i++){
+            char c = s.charAt(i);
+            int num = (int) c;
+            if(num >= 97 && num <= 122){
+                temp = temp + (char) (num - 32);
+            }
+            else if(num >= 65 && num <= 90){
+                temp = temp + (char) (num + 32);
+            }
+        }
+        System.out.println(temp);
     }
 }
